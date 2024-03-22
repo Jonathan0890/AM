@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('contactos_id')->nullable()->constrained('contactos')
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
+            $table->timestamps();
+
         });
     }
 

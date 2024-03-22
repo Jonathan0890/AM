@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-route::get('addcontac', function(){
-    return view('add-contac');
-});
+Route::resource('contacto', ContactoController::class);
+
+Route::get('create', [ContactoController::class, 'create'])->name('contacto.create');

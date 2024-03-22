@@ -13,7 +13,8 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        //
+        $contactos = Contacto::paginate(10);
+        return view('contactos',compact('contactos'));
     }
 
     /**
@@ -21,7 +22,7 @@ class ContactoController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -29,7 +30,11 @@ class ContactoController extends Controller
      */
     public function store(StoreContactoRequest $request)
     {
-        //
+        $request->validate([
+        ]);
+        
+        Contacto::create($request->all());
+        return redirect()->route('contacto.index')->with('success', 'Gracias por contactarnos');
     }
 
     /**
@@ -37,7 +42,7 @@ class ContactoController extends Controller
      */
     public function show(Contacto $contacto)
     {
-        //
+        return view('show-contac');
     }
 
     /**

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->foreignId('prospectos_id')->nullable()->constrained('prospectos')
                 ->onUpdate('restrict')
                 ->onDelete('restrict');
+            $table->timestamps();
+
         });
     }
 
