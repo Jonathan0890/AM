@@ -31,6 +31,10 @@ class ContactoController extends Controller
     public function store(StoreContactoRequest $request)
     {
         $request->validate([
+            'nombre' => 'required|regex:/^[A-Za-z0-9\s]+$/',
+            'correo_electronico' => 'required|email',
+            'telefono' => 'required|regex:/^[0-9\+]+$/',
+            'empresa' => 'required|regex:/^[A-Za-z0-9\s]+$/',
         ]);
         
         Contacto::create($request->all());
@@ -42,7 +46,7 @@ class ContactoController extends Controller
      */
     public function show(Contacto $contacto)
     {
-        return view('show-contac');
+        return view('show');
     }
 
     /**
